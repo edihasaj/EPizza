@@ -1,0 +1,105 @@
+.pizzaCard {
+    width: 18em !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.headerImage {
+    background-image: url('/images/pizza.jpg');
+    height: 350px;
+    width: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.headerImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cartItems {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.cartItem {
+    margin: 15px;
+}
+
+.headerText {
+    color: $black;
+    font-weight: bold;
+}
+
+.productsList {
+    justify-content: space-evenly;
+}
+
+.cartFooter {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.brandName {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.navbarLink {
+    color: $black !important;
+}
+
+.cartIcon {
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.addToCartItem {
+    width: 100%;
+}
+
+.orderInfo {
+    display: flex;
+    justify-content: space-evenly;  
+}
+
+.cartItemRemove {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flashMessageCart {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkoutAmount {
+    display: block;
+    justify-content: space-between;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.checkoutContainer {
+    margin: 20px;
+    margin-bottom: 50px;
+}
+
+.checkoutFooter {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 80px;
+    margin-top: 20px;
+}
+
+.checkoutAmountItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
