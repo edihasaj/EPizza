@@ -14,7 +14,7 @@ class OrderCheckout extends Component {
             cardName: '',
             cvv: '',
             expirationDate: '',
-            userId: '1', // TODO,
+            userId: '',
             deliveryCost: 4.59,
             dollarExchangeUnit: 1.08
         }
@@ -22,7 +22,8 @@ class OrderCheckout extends Component {
 
     componentDidMount() {
         this.setState({
-            cartItems: this.props.cartItems
+            cartItems: this.props.cartItems,
+            userId: sessionStorage.getItem("userEmail")
         })
     }
 
@@ -34,9 +35,11 @@ class OrderCheckout extends Component {
      onSubmit(e){
         e.preventDefault();
         const newCartItems = {...this.state.cartItems};
+        const userEmail = sessionStorage.getItem("userEmail");
         this.setState({
             ...this.state,
-            cartItems: newCartItems
+            cartItems: newCartItems,
+            userId: userEmail
         })
 
         const {
@@ -154,11 +157,11 @@ class OrderCheckout extends Component {
                             <Form>
                                 <Form.Group>
                                     <Form.Label>Shipping address</Form.Label>
-                                    <Form.Control type="text" placeholder="385 Willow St.Statesville, NC 28625" name="address" onChange={this.onChange.bind(this)} required />
+                                    <Form.Control type="text" placeholder="385 Willow St.Statesville, NC 28625" name="address" onChange={this.onChange.bind(this)} />
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label>Phone number</Form.Label>
-                                    <Form.Control type="text" placeholder="0038349657998" name="phoneNumber" onChange={this.onChange.bind(this)} required />
+                                    <Form.Control type="text" placeholder="0038349657998" name="phoneNumber" onChange={this.onChange.bind(this)} />
                                 </Form.Group>
                             </Form>
                         </div>
@@ -172,19 +175,19 @@ class OrderCheckout extends Component {
                             <Form>
                                 <Form.Group>
                                     <Form.Label>Card number</Form.Label>
-                                    <Form.Control type="text" placeholder="4000500060007000" name="cardNumber" onChange={this.onChange.bind(this)} required />
+                                    <Form.Control type="text" placeholder="4000500060007000" name="cardNumber" onChange={this.onChange.bind(this)} />
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label>Card name</Form.Label>
-                                    <Form.Control type="text" placeholder="Mr. John Smith" name="cardName" onChange={this.onChange.bind(this)} required />
+                                    <Form.Control type="text" placeholder="Mr. John Smith" name="cardName" onChange={this.onChange.bind(this)} />
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label>CVV</Form.Label>
-                                    <Form.Control type="text" placeholder="012" name="cvv" onChange={this.onChange.bind(this)} required/>
+                                    <Form.Control type="text" placeholder="012" name="cvv" onChange={this.onChange.bind(this)}/>
                                 </Form.Group>
                                 <Form.Group>
                                     <Form.Label>Expiration date</Form.Label>
-                                    <Form.Control type="text" placeholder="03/03/2022" name="expirationDate" onChange={this.onChange.bind(this)} required/>
+                                    <Form.Control type="text" placeholder="03/03/2022" name="expirationDate" onChange={this.onChange.bind(this)}/>
                                 </Form.Group>
                             </Form>
                         </div>

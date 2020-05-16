@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { addToCart } from '../redux/actions';
-import { Alert, Button, Card, CardGroup } from 'react-bootstrap';
+import { Alert, Button, Card, Spinner } from 'react-bootstrap';
 import FlashMassage from 'react-flash-message';
 import { Link } from 'react-router-dom';
 
@@ -9,7 +9,6 @@ import { API_BASE_URL } from '../../config';
 
 class PizzaList extends Component {
     _isMounted = false;
-
     constructor(props) {
         super(props);
         this.state = {
@@ -50,7 +49,6 @@ class PizzaList extends Component {
             });
         } catch (err) {
             this.setState({ isLoading: false });
-            console.error(err);
         }
     }
 
@@ -96,22 +94,29 @@ class PizzaList extends Component {
                         </div>
                     </FlashMassage> : <></> }
                 </div>
-                {!isLoading ? 
-                <div className="row productsList">
-                    {pizzas.map(pizza => (
-                        <Card key={ pizza.id } className="pizzaCard">
-                            <Card.Img src={`/images/${pizza.name.toLowerCase()}.jpg`} variant="top" alt="..." />
-                            <Card.Body className="card-body">
-                                <Card.Title className="card-title">{ pizza.name }</Card.Title>
-                                <Card.Text className="card-text">{ pizza.fillers }</Card.Text>
-                                <Card.Text className="card-text"><strong>{ pizza.price } &euro;</strong></Card.Text>
-                                <Button variant="outline-primary addToCartItem" size="sm" onClick={(e) => this.addPizza(e, pizza)}>Add to cart</Button>
-                            </Card.Body>
-                        </Card>
-                    ))}
-                </div>
-                :
-                <div className="row productsList">Loading...</div>}
+                {
+                    !isLoading 
+                    ? 
+                    <div className="row productsList">
+                        {pizzas.map(pizza => (
+                            <Card key={ pizza.id } className="pizzaCard">
+                                <Card.Img src={`/images/${pizza.name.toLowerCase()}.jpg`} variant="top" alt="..." />
+                                <Card.Body className="card-body">
+                                    <Card.Title className="card-title">{ pizza.name }</Card.Title>
+                                    <Card.Text className="card-text">{ pizza.fillers }</Card.Text>
+                                    <Card.Text className="card-text"><strong>{ pizza.price } &euro;</strong></Card.Text>
+                                    <Button variant="outline-primary addToCartItem" size="sm" onClick={(e) => this.addPizza(e, pizza)}>Add to cart</Button>
+                                </Card.Body>
+                            </Card>
+                        ))}
+                    </div>
+                    :
+                    <div className="row productsList">
+                        <Spinner animation="border" role="status">
+                            <span className="sr-only">Loading...</span>
+                        </Spinner>
+                    </div>
+                }
             </div>
         );
     }

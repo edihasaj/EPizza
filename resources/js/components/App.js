@@ -15,6 +15,7 @@ import Login from './User/Login';
 import ForgotPassword from './User/Forgot';
 import ResetPassword from './User/Reset';
 import auth from './User/Auth';
+import Orders from './Orders/Index';
 
 const PrivateRoute = ({component: Component, authed, ...rest}) => (
     <Route 
@@ -33,6 +34,7 @@ const routing = (
             <PrivateRoute authed={auth.isAuthenticated()} path="/pizzas" component={PizzaIndex} /> 
             <Route path="/cart" component={CartIndex} />
             <PrivateRoute authed={auth.isAuthenticated()} path="/checkout" component={OrderCheckout} />
+            <PrivateRoute authed={auth.isAuthenticated()} path='/orders' component={Orders}/>
             <Route path="/register" component={Register} />
             <Route path="/login" component={Login} />
             <Route path='/forgotpassword' component={ForgotPassword}/>

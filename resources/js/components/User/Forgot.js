@@ -38,11 +38,11 @@ class Forgot extends Component{
 		let msg = (!error) ? 'We have e-mailed your password reset link!' : 'User doesnt exist' ;
 		let name = (!error) ? 'alert alert-success' : 'alert alert-danger' ;
 		return(
-			<div className="container">
+			<div className="container pt-4 pb-4">
 				<div className="row">
 					<div className="col-md-8 col-md-offset-2">
 						<div className="panel panel-default">
-							<div className="panel-heading">Reset Password</div>
+							<h5 className="panel-heading pb-2">Reset Password</h5>
 							<div className="panel-body">
 								<div className="col-md-offset-2 col-md-8 col-md-offset-2">
 									{error != undefined && <div className={name} role="alert">{msg}</div>}
@@ -50,7 +50,9 @@ class Forgot extends Component{
 								<Form onSubmit={this.onSubmit.bind(this)}>
 									<Form.Group>
 										<Form.Label for="email" className="col-md-4">E-Mail Address</Form.Label>
-										<Form.Control id="email" type="email" ref= "email" name="email"  onChange={this.onChange.bind(this)} required />
+                                        <div className="col-md-6">
+											<Form.Control id="email" type="email" ref= "email" name="email"  onChange={this.onChange.bind(this)} required />
+										</div>
 									</Form.Group>
 									<Form.Group>
 										<div className="col-md-6 col-md-offset-4">

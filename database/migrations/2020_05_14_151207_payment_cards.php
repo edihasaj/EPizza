@@ -19,7 +19,7 @@ class PaymentCards extends Migration
             $table->string('cardName');
             $table->integer('cvv');
             $table->string('expirationDate');
-            $table->integer('userId');
+            $table->string('userId');
             $table->timestamps();
         });
     }

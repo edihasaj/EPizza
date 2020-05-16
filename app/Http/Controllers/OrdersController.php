@@ -7,6 +7,7 @@ use App\Order;
 use App\OrderDetails;
 use App\PaymentCard;
 Use \Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class OrdersController extends Controller
 {
@@ -78,7 +79,12 @@ class OrdersController extends Controller
      */
     public function show($id)
     {
-        //
+        return DB::table('orders')
+            ->where('orders.userId', $id)
+            ->join('order_details', 'order_details.orderId', '=', 'orders.id')
+            ->join('pizzas', 'pizzas.id', '=', 'order_details.productId')
+            ->select('orders.id', 'orders.orderDate', 'orders.address', 'order_details.productId', 'pizzas.name', 'pizzas.price')
+            ->get();
     }
 
     /**

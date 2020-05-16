@@ -16,7 +16,7 @@ class Orders extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamp('orderDate')->useCurrent();
-            $table->integer('userId');
+            $table->string('userId');
             $table->string('address');
             $table->string('phoneNumber');
             $table->timestamps();

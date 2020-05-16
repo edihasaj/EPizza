@@ -6,6 +6,7 @@ class Auth {
 
     logout() {
         sessionStorage.setItem("authed", "false");
+        sessionStorage.removeItem("userEmail");
         location.replace('/');
     }
 

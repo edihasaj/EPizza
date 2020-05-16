@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import auth from './Auth';
 import { Redirect } from 'react-router-dom';
+import { Form } from 'react-bootstrap';
 
 class Register extends Component {
     constructor(props){
@@ -24,11 +25,13 @@ class Register extends Component {
             password_confirmation
           })
           .then((response) => {
+            sessionStorage.setItem("userEmail", this.state.email);
             this.setState({err: false});
             auth.login();
           })
           .catch(error=> {
             sessionStorage.setItem("authed", "false");
+            sessionStorage.removeItem("userEmail");
             this.refs.name.value="";
             this.refs.password.value="";
             this.refs.email.value="";
@@ -52,56 +55,48 @@ class Register extends Component {
 
         return (   
              <div>
-                <div className="container">
+                <div className="container pt-4 pb-4">
                     <div className="row">
                         <div className="col-md-8 col-md-offset-2">
                             <div className="panel panel-default">
-                                <div className="panel-heading">Register</div>
+                                <h5 className="panel-heading pb-2">Register</h5>
                                 <div className="panel-body">
                                     <div className="col-md-offset-2 col-md-8 col-md-offset-2">
                                         {error != undefined && <div className={name} role="alert">{msg}</div>}
                                     </div>   
-                                    <form className="form-horizontal" role="form" method="POST" onSubmit= {this.onSubmit.bind(this)}>
-                                        <div className="form-group">
-                                            <label htmlFor="name" className="col-md-4 control-label">Name</label>
-
+                                    <Form onSubmit= {this.onSubmit.bind(this)}>
+                                        <Form.Group>
+                                            <Form.Label htmlFor="name" className="col-md-4">Name</Form.Label>
                                             <div className="col-md-6">
-                                                <input id="name" type="text" className="form-control" ref="name" name="name" onChange={this.onChange.bind(this)} required autoFocus />
+                                                <Form.Control id="name" type="text" ref="name" name="name" onChange={this.onChange.bind(this)} required autoFocus />
                                             </div>
-                                        </div>
-
-                                        <div className="form-group">
-                                            <label htmlFor="email" className="col-md-4 control-label">E-Mail Address</label>
-
+                                        </Form.Group>
+                                        <Form.Group>
+                                            <Form.Label htmlFor="email" className="col-md-4">E-Mail Address</Form.Label>
                                             <div className="col-md-6">
-                                                <input id="email" type="email" className="form-control" ref="email" name="email" onChange={this.onChange.bind(this)} required />
+                                                <Form.Control id="email" type="email" ref="email" name="email" onChange={this.onChange.bind(this)} required />
                                             </div>
-                                        </div>
-
-                                        <div className="form-group">
-                                            <label htmlFor="password" className="col-md-4 control-label">Password</label>
-
+                                        </Form.Group>
+                                        <Form.Group>
+                                            <Form.Label htmlFor="password" className="col-md-4">Password</Form.Label>
                                             <div className="col-md-6">
-                                                <input id="password" type="password" className="form-control"  ref="password" name="password" onChange={this.onChange.bind(this)} required/>
+                                                <Form.Control id="password" type="password"  ref="password" name="password" onChange={this.onChange.bind(this)} required/>
                                             </div>
-                                        </div>
-
-                                        <div className="form-group">
-                                            <label htmlFor="password-confirm" className="col-md-4 control-label">Confirm Password</label>
-
+                                        </Form.Group>
+                                        <Form.Group>
+                                            <Form.Label htmlFor="password-confirm" className="col-md-4">Confirm Password</Form.Label>
                                             <div className="col-md-6">
-                                                <input id="password-confirm" type="password" className="form-control" ref="confirm" name="password_confirmation" onChange={this.onChange.bind(this)} required/>
+                                                <Form.Control id="password-confirm" type="password" ref="confirm" name="password_confirmation" onChange={this.onChange.bind(this)} required/>
                                             </div>
-                                        </div>
-
-                                        <div className="form-group">
+                                        </Form.Group>
+                                        <Form.Group>
                                             <div className="col-md-6 col-md-offset-4">
                                                 <button type="submit" className="btn btn-primary">
                                                     Register
                                                 </button>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </Form.Group>
+                                    </Form>
                                 </div>
                             </div>
                         </div>
