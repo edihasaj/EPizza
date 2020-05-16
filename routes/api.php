@@ -21,13 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::resource('pizzas', 'PizzaController');
 Route::resource('orders', 'OrdersController');
 
-// Uncomment to make pizzas api require authentication
-// Route::group([
-//     'middleware' => 'auth',
-// ], function() {
-//     Route::resource('pizzas', 'PizzaController');
-// });
-
 Route::group(['middleware' => ['web']], function () {
     Route::post('login','Auth\LoginController@login');  
     Route::post('register','Auth\RegisterController@register');  
