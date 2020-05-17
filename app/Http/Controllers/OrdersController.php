@@ -83,7 +83,7 @@ class OrdersController extends Controller
             ->where('orders.userId', $id)
             ->join('order_details', 'order_details.orderId', '=', 'orders.id')
             ->join('pizzas', 'pizzas.id', '=', 'order_details.productId')
-            ->select('orders.id', 'orders.orderDate', 'orders.address', 'order_details.productId', 'pizzas.name', 'pizzas.price')
+            ->select('orders.id', 'orders.orderDate', 'orders.address', 'order_details.productId', 'order_details.quantity', 'pizzas.name', 'pizzas.price')
             ->get();
     }
 
