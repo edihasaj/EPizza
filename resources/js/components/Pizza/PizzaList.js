@@ -29,7 +29,7 @@ class PizzaList extends Component {
             cartItems: this.props.cartItems,
          })
       }
-
+ 
       componentWillUnmount() {
         this._isMounted = false;
       }
