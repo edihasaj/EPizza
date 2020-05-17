@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PizzaList from './PizzaList';
-import { Link, Route } from 'react-router-dom';
 
 class PizzaIndex extends Component {
     constructor (props) {
