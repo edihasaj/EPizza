@@ -37,7 +37,7 @@ class PizzaList extends Component {
       async getPizzas() {
         try {
             this.setState({ isLoading: true });
-            const response = await fetch('api/pizzas', {
+            const response = await fetch(API_BASE_URL + '/pizzas', {
                 headers: {
                     Accept: 'application/json'
                 },
