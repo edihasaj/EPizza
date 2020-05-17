@@ -44,7 +44,7 @@ class PizzaList extends Component {
             });
             const pizzasList = await response.json();
             this.setState({ 
-                pizzas: pizzasList, 
+                pizzas: pizzasList,
                 isLoading: false
             });
         } catch (err) {
